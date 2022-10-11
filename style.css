@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+.error {
+  background-color: lightcoral;
+  border: red;
+}
