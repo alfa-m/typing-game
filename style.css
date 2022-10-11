@@ -17,7 +17,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20%;
+  height: 15%;
   text-align: center;
   background-image: linear-gradient(
     to left,
@@ -30,7 +30,12 @@ header {
   color: transparent;
 }
 
-p {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 30%;
+  text-align: center;
   font-size: large;
 }
 
