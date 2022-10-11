@@ -4,6 +4,19 @@
   margin: 0;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+span {
+  font-weight: bolder;
+}
+
 .highlight {
   background-color: yellow;
 }
