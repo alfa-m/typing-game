@@ -9,7 +9,7 @@ const quotes = [
 
 let words = [];
 let wordIndex = 0;
-let startTime = 0;
+let startTime = Date.now();
 
 const quoteElement = document.getElementById("quote");
 const messageElement = document.getElementById("message");
@@ -22,7 +22,7 @@ document.getElementById("start").addEventListener("click", () => {
   wordIndex = 0;
 
   const spanWords = words.map(function (word) {
-    return `<span>${word} </span>`;
+    return `<span> ${word} </span>`;
   });
 
   quoteElement.innerHTML = spanWords.join("");
@@ -52,7 +52,7 @@ typedValueElement.addEventListener("input", () => {
       wordElement.className = "";
     }
 
-    quoteElement.childNodes[wordIndex].className = "highlights";
+    quoteElement.childNodes[wordIndex].className = "highlight";
   } else if (currentWord.startsWith(typedValue)) {
     typedValueElement.className = "";
   } else {
