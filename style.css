@@ -30,6 +30,10 @@ header {
   color: transparent;
 }
 
+p {
+  font-size: large;
+}
+
 span {
   font-weight: bolder;
 }
