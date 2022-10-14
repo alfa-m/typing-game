@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js" defer></script>
   </head>
 
   <body>
@@ -17,13 +19,12 @@
     <main>
       <p>Practice your typing skills with a quote from tech ladies.</p>
       <p id="start-text">Click <span>start</span> to begin!</p>
-      <p id="quote"></p>
       <p id="message"></p>
     </main>
     <div>
+      <button type="button" class="button" id="start">Start game</button>
+      <p id="quote"></p>
       <input type="text" aria-label="current word" id="typed-value" />
-      <button type="button" id="start">Start</button>
     </div>
-    <script src="script.js"></script>
   </body>
 </html>
