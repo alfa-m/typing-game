@@ -59,7 +59,7 @@ function checkInput() {
   input.value = "";
   quote.childNodes[highlightPosition].className = "";
 
-  if (wordQueue.lenght === 0) {
+  if (wordQueue.length === 0) {
     gameOver();
     return;
   }
