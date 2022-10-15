@@ -17,14 +17,16 @@
       <h1>Typing game!</h1>
     </header>
     <main>
-      <p>Practice your typing skills with a quote from tech ladies.</p>
-      <p id="start-text">Click <span>start</span> to begin!</p>
-      <p id="message"></p>
+      <p>Practice your typing skills with a quote from Star Trek.</p>
+      <p id="start-text">Click the <span>start button</span> to begin!</p>
+      <div>
+        <button type="button" class="button" id="start">
+          Start game <i class="rocket"></i>
+        </button>
+        <p id="quote"></p>
+        <p id="message"></p>
+        <input type="text" id="typed-value" />
+      </div>
     </main>
-    <div>
-      <button type="button" class="button" id="start">Start game</button>
-      <p id="quote"></p>
-      <input type="text" aria-label="current word" id="typed-value" />
-    </div>
   </body>
 </html>
