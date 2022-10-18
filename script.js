@@ -13,7 +13,7 @@ const input = document.getElementById("typed-value");
 const start = document.getElementById("start");
 const message = document.getElementById("message");
 
-let targetWord;
+// let targetWord;
 let wordQueue;
 let highlightPosition;
 let startTime;
