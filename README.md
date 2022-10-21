@@ -1,3 +1,3 @@
-# typing-game
+# Typing game
 
 A simple browser typing game

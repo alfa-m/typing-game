@@ -119,7 +119,7 @@ button .rocket {
   width: 60px;
   height: 34px;
   margin-left: 20px;
-  background: url("./image/rocket.png") right center no-repeat;
+  background: url("./images/rocket.png") right center no-repeat;
   background-size: 60px;
 }
 
@@ -223,5 +223,5 @@ input {
 }
 
 .winner {
-  background-image: url("./image/sparks.gif");
+  background-image: url("./images/sparks.gif");
 }
