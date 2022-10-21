@@ -8,69 +8,141 @@ const quotes = [
   "Compassion: that is the one thing no machine ever had. Maybe it is the one thing that keeps us ahead of them",
 ];
 
+const mainText = document.getElementById("main-text");
+const order = document.getElementById("imperative");
+const instruct = document.getElementById("instruction");
+const gameText = document.getElementById("game-text");
 const quote = document.getElementById("quote");
-const input = document.getElementById("typed-value");
-const start = document.getElementById("start");
 const message = document.getElementById("message");
 
-// let targetWord;
 let wordQueue;
 let highlightPosition;
 let startTime;
 
-function startGame() {
-  console.log("Game started!");
+pageLoad();
 
-  const quoteIndex = Math.floor(Math.random() * quotes.length);
-  const quoteText = quotes[quoteIndex];
-
-  wordQueue = quoteText.split(" ");
-  quote.innerHTML = wordQueue.map((word) => `<span>${word}</span>`).join("");
-
-  highlightPosition = 0;
-  quote.childNodes[highlightPosition].className = "highlight";
-
-  startTime = new Date().getTime();
-
+function pageLoad() {
   document.body.className = "";
-  start.className = "started";
-  setTimeout(() => {
-    start.className = "button";
-  }, 2000);
-}
+  order.textContent =
+    "Practice your typing skills with a quote from Star Trek.";
 
-start.addEventListener("click", startGame);
-input.addEventListener("input", checkInput);
+  let btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "button";
+  btn.textContent = "Start game";
+  btn.id = "start";
+  mainText.appendChild(btn);
 
-function checkInput() {
-  const currentWord = wordQueue[0]
-    .replaceAll(".", "")
-    .replaceAll(",", "")
-    .replaceAll(";", "")
-    .replaceAll(":", "");
-  const typedValue = input.value.trim();
+  let rocket = document.createElement("i");
+  rocket.className = "rocket";
+  rocket.value = "";
+  btn.appendChild(rocket);
 
-  if (currentWord !== typedValue) {
-    input.className = currentWord.startsWith(typedValue) ? "" : "error";
-    return;
-  }
-
-  wordQueue.shift();
+  let input = document.createElement("input");
+  input.type = "text";
   input.value = "";
-  quote.childNodes[highlightPosition].className = "";
+  input.id = "typed-value";
 
-  if (wordQueue.length === 0) {
-    gameOver();
-    return;
+  let reload = document.createElement("button");
+  reload.type = "button";
+  reload.className = "button";
+  reload.textContent = "Play again?";
+  reload.id = "restart";
+
+  btn.addEventListener("click", startGame);
+  input.addEventListener("input", checkInput);
+  reload.addEventListener("click", reLoad);
+
+  function reLoad(act) {
+    quote.textContent = "";
+    message.textContent = "";
+    gameText.removeChild(reload);
+
+    document.body.className = "";
+
+    mainText.style.height = "35%";
+    instruct.style.visibility = "visible";
+
+    gameText.style.height = "25%";
+    gameText.style.justifyContent = "space-between";
+
+    quote.type = "";
+    quote.className = "";
+
+    pageLoad();
   }
 
-  highlightPosition++;
-  quote.childNodes[highlightPosition].className = "highlight";
-}
+  function startGame() {
+    setTimeout(() => {
+      console.log("Game started!");
 
-function gameOver() {
-  const elapsedTime = new Date().getTime() - startTime;
-  document.body.className = "winner";
-  message.innerHTML = `<span class="congrats">Congratulations!</span>
-  <br>You finished in ${elapsedTime / 1000} seconds.`;
+      order.textContent = "Type as fast as you can!";
+
+      const quoteIndex = Math.floor(Math.random() * quotes.length);
+      const quoteText = quotes[quoteIndex];
+
+      wordQueue = quoteText.split(" ");
+      quote.innerHTML = wordQueue
+        .map((word) => `<span>${word}</span>`)
+        .join("");
+
+      highlightPosition = 0;
+      quote.childNodes[highlightPosition].className = "highlight";
+
+      startTime = new Date().getTime();
+
+      btn.removeChild(rocket);
+      mainText.removeChild(btn);
+      mainText.style.height = "15%";
+      instruct.style.visibility = "hidden";
+      gameText.appendChild(input);
+    }, 800);
+  }
+
+  function checkInput() {
+    const currentWord = wordQueue[0]
+      .replaceAll(".", "")
+      .replaceAll(",", "")
+      .replaceAll(";", "")
+      .replaceAll(":", "");
+    const typedValue = input.value.trim();
+
+    if (currentWord !== typedValue) {
+      input.className = currentWord.startsWith(typedValue) ? "" : "error";
+      return;
+    }
+
+    wordQueue.shift();
+    input.value = "";
+    quote.childNodes[highlightPosition].className = "";
+
+    if (wordQueue.length === 0) {
+      gameOver();
+      return;
+    }
+
+    highlightPosition++;
+    quote.childNodes[highlightPosition].className = "highlight";
+  }
+
+  function gameOver() {
+    gameText.removeChild(input);
+
+    order.textContent = "";
+
+    const elapsedTime = new Date().getTime() - startTime;
+
+    document.body.className = "winner";
+
+    gameText.style.height = "40%";
+    gameText.style.justifyContent = "space-evenly";
+
+    quote.type = "span";
+    quote.className = "congrats";
+    quote.textContent = `Congratulations!`;
+
+    message.textContent = `You finished in ${elapsedTime / 1000} seconds.`;
+
+    gameText.appendChild(reload);
+  }
 }

@@ -6,6 +6,7 @@
   --second-color: #caf0f8;
   --third-color: #90e0ef;
   --fourth-color: #ffa41b;
+  --fifth-color: #0e185f;
 }
 
 body {
@@ -13,7 +14,6 @@ body {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  /* background-color: #e8ffc2; */
   background-color: var(--main-color);
   font-family: Arial, Helvetica, sans-serif;
   color: var(--second-color);
@@ -33,10 +33,10 @@ header {
     #367e18
   ); */
   background-image: linear-gradient(
-    to left,
-    var(--third-color),
-    var(--second-color),
-    var(--third-color)
+    to right,
+    var(--third-color) 0%,
+    var(--second-color) 50%,
+    var(--third-color) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -44,75 +44,74 @@ header {
 }
 
 main {
-  display: grid;
-  place-items: center;
-  max-width: 640px;
-  margin: 0 auto;
-  line-height: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  height: 85%;
 }
 
 h1 {
   font-style: normal;
   font-weight: bold;
-  font-size: 4em;
+  font-size: 5rem;
   line-height: 105%;
   /* color: whitesmoke; */
 }
 
+h2 {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 2.8rem;
+}
+
 p {
   text-align: center;
-  font-size: 1.6em;
+  font-size: 2.5rem;
+}
+
+.main-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 35%;
+  width: 100%;
 }
 
 button {
   display: flex;
   margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 100px;
   padding: 20px;
   border: 0;
-  border-radius: 50px;
-  font-size: 1.6em;
+  border-radius: 100px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--fifth-color);
   background-color: var(--second-color);
   cursor: pointer;
   overflow: hidden;
 }
 
-span {
-  font-weight: bolder;
+button:hover {
+  color: var(--second-color);
+  background-color: var(--fifth-color);
+  transition: ease-in-out 0.3s;
 }
 
-span::after {
-  content: "";
-  display: inline-block;
-  width: 6px;
-}
-
-input {
-  width: 300px;
-  padding: 20px;
-  font-size: 2em;
-  border: 0;
-  border-radius: 10px;
-  box-shadow: inset 1px 0px 5px 4px rgba(0, 0, 0, 0.2);
-}
-
-.highlight {
-  background-color: var(--fourth-color);
-  text-decoration: underline;
-}
-
-.congrats {
-  text-transform: uppercase;
-  font-size: 3em;
-  font-weight: bold;
-  color: var(--fourth-color);
-}
-
-.error {
-  background-color: #ea2027;
-}
-
-.winner {
-  background-image: url();
+button .rocket {
+  animation: zoomOutRight 1s;
+  animation-iteration-count: 1;
+  transform-origin: right center;
 }
 
 .rocket {
@@ -120,8 +119,13 @@ input {
   width: 60px;
   height: 34px;
   margin-left: 20px;
-  background: url(imgurl) right center no-repeat;
+  background: url("/image/rocket.png") right center no-repeat;
   background-size: 60px;
+}
+
+#start:hover .rocket {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
 }
 
 @keyframes shake {
@@ -165,4 +169,59 @@ input {
     opacity: 0;
     transform: scale(0.1) translate(500px, 0);
   }
+}
+
+.game-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 60px;
+  height: 25%;
+  width: 80%;
+}
+
+#quote {
+  height: 20%;
+}
+
+span {
+  font-weight: bolder;
+}
+
+span::after {
+  content: "";
+  display: inline-block;
+  width: 1%;
+}
+
+.highlight {
+  background-color: var(--fourth-color);
+  text-decoration: underline;
+  color: var(--fifth-color);
+}
+
+.error {
+  background-color: #ea2027;
+}
+
+input {
+  width: 40%;
+  padding: 20px;
+  font-size: 2.3rem;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: inset 1px 0px 5px 4px rgba(0, 0, 0, 0.2);
+}
+
+.congrats {
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--fourth-color);
+}
+
+.winner {
+  background-image: url("/image/sparks.gif");
 }
