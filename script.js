@@ -50,8 +50,6 @@ function pageLoad() {
   reload.id = "restart";
 
   btn.addEventListener("click", startGame);
-  input.addEventListener("input", checkInput);
-  reload.addEventListener("click", reLoad);
 
   function reLoad(act) {
     quote.textContent = "";
@@ -73,6 +71,7 @@ function pageLoad() {
   }
 
   function startGame() {
+    input.addEventListener("input", checkInput);
     setTimeout(() => {
       console.log("Game started!");
 
@@ -145,4 +144,6 @@ function pageLoad() {
 
     gameText.appendChild(reload);
   }
+
+  reload.addEventListener("click", reLoad);
 }
